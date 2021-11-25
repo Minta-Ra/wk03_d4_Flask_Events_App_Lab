@@ -41,7 +41,7 @@
                 <span>Not recurring ❌</span>
             {% endif %}
 
-        <form action="/delete/{{ event.name }}" method="POST">
+        <form action="/events/delete/{{ event.name_of_event }}" method="POST">
             <input type="submit" value="Delete">
         </form>
 

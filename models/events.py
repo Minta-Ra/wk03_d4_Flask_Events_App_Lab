@@ -17,7 +17,7 @@ def add_new_event(event):
 def delete_event(event_name):
     event_to_delete = None
     for event in events:
-        if event.name == event_name:
+        if event.name_of_event == event_name:
             event_to_delete = event
             break
 

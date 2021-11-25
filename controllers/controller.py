@@ -35,7 +35,7 @@ def add_event():
 
 
 # DELETE AN EVENT
-@app.route("/events/delete/<event_name>", methods=["POST"])
-def delete(event_name):
-    delete_event(event_name)
+@app.route("/events/delete/<name>", methods=["POST"])
+def delete(name):
+    delete_event(name)
     return redirect("/events")
