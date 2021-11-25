@@ -26,6 +26,7 @@
 <div>
     {% for event in events %}
     <div>
+        <a href="/events/delete/ {{ events.index(event) }}">Delete</a>
         <p>{{ event.name_of_event }} -- {{ event.date }} -- {{ event.number_of_guests }} -- {{ event.room_location }} -- {{ event.description }} -- recurring?
     
             {% if event.recurring %}

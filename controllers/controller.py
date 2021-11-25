@@ -26,3 +26,6 @@ def add_event():
     add_new_event(newEvent)
     # Render the list
     return index()
+
+
+# @app.route('/events')
