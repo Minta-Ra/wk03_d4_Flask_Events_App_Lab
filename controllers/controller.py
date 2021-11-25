@@ -1,23 +1,26 @@
-from flask import render_template, request
+from flask import render_template, request, redirect
 from app import app
 from models.events import events, add_new_event
 from models.event import Event
+from datetime import datetime
 
-@app.route('/events')
+@app.route("/events")
 def index():
-    return render_template('index.html', title="Events", events=events)
+    return render_template("index.html", title="Events", events=events)
 
 
-@app.route('/events', methods=["POST"])
+@app.route("/events", methods=["POST"])
 def add_event():
-    # return render_template()
-
+    # Date
+    event_date = request.form["date"]
+    split_date = event_date.split("/")
+    event_date = datetime.date(int(split_date[0]), int(split_date[1]), int(split_date[2]))
     # Create a new task
     event_name = request.form["name_of_event"]
-    event_date = request.form["date"]
     event_num_of_guests = int(request.form["number_of_guests"])
     event_room_location = request.form["room_location"]
     event_description = request.form["description"]
+    # Recurring
     event_recurring = False
     if "recurring" in request.form.keys():
         event_recurring = True
@@ -25,7 +28,7 @@ def add_event():
     # Add task to the list
     add_new_event(newEvent)
     # Render the list
-    return index()
+    return redirect("/events")
 
 
-# @app.route('/events')
+# @app.route("/events")
