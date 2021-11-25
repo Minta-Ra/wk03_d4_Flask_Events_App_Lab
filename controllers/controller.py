@@ -18,7 +18,10 @@ def add_event():
     event_num_of_guests = int(request.form["number_of_guests"])
     event_room_location = request.form["room_location"]
     event_description = request.form["description"]
-    newEvent = Event(event_date, event_name, event_num_of_guests, event_room_location, event_description)
+    event_recurring = False
+    if "recurring" in request.form.keys():
+        event_recurring = True
+    newEvent = Event(event_date, event_name, event_num_of_guests, event_room_location, event_description, event_recurring)
     # Add task to the list
     add_new_event(newEvent)
     # Render the list
