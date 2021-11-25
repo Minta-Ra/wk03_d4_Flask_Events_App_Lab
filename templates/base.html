@@ -1,23 +1,23 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 <html>
+    <head>
+        <title>
+            {{ title }} - My Events
+        </title>
+    </head>
 
-<head>
-    <title>
-        {{ title }} - My Events
-    </title>
-</head>
-
-<body>
-    <nav>
-        <ul>
-            <li>
-                <a href="/events">Home</a>
-            </li>
-        </ul>
-    </nav>
-    <hr>
-    {% block content %}
-        <!-- This will have content that changes every time we go to a different page -->
-    {% endblock content %}
-</body>
-
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/events">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+        {% block content %}
+            <!-- This will have content that changes every time we go to a different page -->
+        {% endblock content %}
+    </body>
 </html>

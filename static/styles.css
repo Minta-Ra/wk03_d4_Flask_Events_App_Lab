@@ -1,0 +1,12 @@
+.all-events {
+    display: flex;
+}
+
+.event {
+    flex-flow: row wrap;
+    align-items: left;
+    background-color: lightblue;
+    margin: 10px;
+    padding: 10px 30px 10px 30px;
+    border-radius: 10px;
+}

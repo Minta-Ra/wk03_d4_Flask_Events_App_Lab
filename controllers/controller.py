@@ -1,19 +1,22 @@
 from flask import render_template, request, redirect
 from app import app
-from models.events import events, add_new_event
+from models.events import events, add_new_event, delete_event
 from models.event import Event
-from datetime import datetime
+import datetime
 
+
+# RENDER ALL SAVED EVENTS
 @app.route("/events")
 def index():
     return render_template("index.html", title="Events", events=events)
 
 
+# ADD A NEW EVENT
 @app.route("/events", methods=["POST"])
 def add_event():
     # Date
     event_date = request.form["date"]
-    split_date = event_date.split("/")
+    split_date = event_date.split("-")
     event_date = datetime.date(int(split_date[0]), int(split_date[1]), int(split_date[2]))
     # Create a new task
     event_name = request.form["name_of_event"]
@@ -31,4 +34,8 @@ def add_event():
     return redirect("/events")
 
 
-# @app.route("/events")
+# DELETE AN EVENT
+@app.route("/events/delete/<event_name>", methods=["POST"])
+def delete(event_name):
+    delete_event(event_name)
+    return redirect("/events")
