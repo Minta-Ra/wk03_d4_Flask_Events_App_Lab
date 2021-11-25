@@ -25,7 +25,15 @@
 <div>
     {% for event in events %}
     <div>
-        <p>{{ event.name_of_event }} -- {{ event.date }} -- {{ event.number_of_guests }} -- {{ event.room_location }} -- {{ event.description }} -- {{ event.recurring }}</p>
+        <p>{{ event.name_of_event }} -- {{ event.date }} -- {{ event.number_of_guests }} -- {{ event.room_location }} -- {{ event.description }} -- recurring?
+    
+            {% if event.recurring %}
+                <span>✅</span>      
+            {% else %}
+                <span>❌</span>
+            {% endif %}
+        </p>
+
     </div>
         
     {% endfor %}
